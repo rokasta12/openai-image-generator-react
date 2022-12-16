@@ -3,33 +3,43 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import axios from "axios";
 import { baseImage, BASE_URL } from "./constants";
+import loadingGIF from "./assets/giphy.webp";
+
 function App() {
   const [count, setCount] = useState(0);
   const [imageURL, setImageURL] = useState(baseImage);
+  const [isLoading, setisLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
 
   const generateImg = async () => {
-    console.log("clicked");
+    if (!prompt) return alert("Please enter a prompt");
+    setisLoading(true);
+    setImageURL(loadingGIF);
     const response = await axios.post(BASE_URL + "/api/hello", { prompt });
     const image = response.data.image;
-    setImageURL(image);
+
+    setTimeout(() => {
+      setImageURL(image);
+      setisLoading(false);
+    }, 250);
   };
 
   return (
     <div className="App">
       <div>
-        <img src={imageURL} className="logo" alt="Vite logo" />
+        <img src={imageURL} className=" h-96 w-96 " alt="ai-image" />
       </div>
       <textarea
+        className="w-full px-2 py-4 mt-6  rounded-md focus:outline-red-300"
         value={prompt}
         onChange={(event) => setPrompt(event.target.value)}
       />
+
       <div className="card">
-        <button onClick={generateImg}>Lets do it</button>
+        <button disabled={isLoading} onClick={generateImg}>
+          {isLoading ? "building your image ✨" : "Lets do it"}
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   );
 }

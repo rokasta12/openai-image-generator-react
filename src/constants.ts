@@ -1,3 +1,3 @@
 export const BASE_URL = "";
 export const baseImage =
-  "https://images.unsplash.com/photo-1655634627107-da33d1c1cf02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGFpJTIwZ2VuZXJhdGVkJTIwaW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60";
+  "https://images.unsplash.com/photo-1660491630578-4299a3c09db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80";
