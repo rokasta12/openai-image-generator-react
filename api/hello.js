@@ -1,17 +1,20 @@
 // import fetch from "node-fetch";
+import { Configuration, OpenAIApi } from "openai";
 
-export default function handler(request, response) {
-  /*   const res = await fetch("...", {
-    method: "POST",
-    body: JSON.stringify({
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-    }),
-    headers: { "Content-Type": "application/json" },
+export default async function handler(request, response) {
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_KEY,
   });
 
-  const data = await res.json(); */
-  const API_KEY = process.env.OPENAI_KEY;
-  console.log(API_KEY, "API_KEY");
-  return response.status(200).json({ hi: "hello" });
+  const openai = new OpenAIApi(configuration);
+  const prompt = request.body.prompt;
+
+  const aiResponse = await openai.createImage({
+    prompt,
+    n: 1,
+    size: "1024x1024",
+  });
+  const image = aiResponse.data.data[0].url;
+
+  return response.status(200).json({ image });
 }
