@@ -30,7 +30,7 @@ function App() {
         <img src={imageURL} className=" h-96 w-96 " alt="ai-image" />
       </div>
       <textarea
-        className="w-full px-2 py-4 mt-6  rounded-md focus:outline-red-300"
+        className="border-2 border-red-200 dark:border-0 w-full px-2 py-4 mt-6  rounded-md focus:outline-red-300"
         value={prompt}
         onChange={(event) => setPrompt(event.target.value)}
       />
