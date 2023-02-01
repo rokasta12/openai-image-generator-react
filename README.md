@@ -1,4 +1,13 @@
 
+# Next.js with OpenAI integration
+
+This project is a demo of how to integrate OpenAI's language models into a Next.js application. The project uses the OpenAI API to generate text based on a given prompt.
+
+
+
+
+
+
 ## Getting started
 
 To get started with the project, follow these steps:
